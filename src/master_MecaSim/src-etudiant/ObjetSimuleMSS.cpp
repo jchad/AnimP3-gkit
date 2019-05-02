@@ -60,10 +60,7 @@ _SytemeMasseRessort(0)
     
     /* Calcul du facteur d amortissement des ressorts */
     _SytemeMasseRessort->_RessOS.SetFactAmorti();
-    
 }
-
-
 
 /**
  * Initialisation des tableaux et construction du maillage
@@ -223,7 +220,7 @@ void ObjetSimuleMSS::initObjetSimule()
         /* Position de la particule */
         Part->SetPosition(P[i]);
         // TODO : cette position n est pas mise a jour car on se sert du tableau P
-        // TODO : mettre un pointeur sur la valeur contenue dans P[i] pour que la position de la particule soit mise ˆ jour
+        // TODO : mettre un pointeur sur la valeur contenue dans P[i] pour que la position de la particule soit mise ï¿½ jour
         
         /* Masse de la particule */
         Part->SetMass(M[i]);
@@ -394,12 +391,19 @@ void ObjetSimuleMSS::setNormals()
 void ObjetSimuleMSS::initMeshObjet()
 {
     //std::cout << "------ ObjetSimule::init_Mesh_Object() ----------- " << std::endl;
-    
-   
-    
-    
+
     std::cout << "Maillage du MSS pour affichage build ..." << std::endl;
-    
+
+    m_ObjetSimule = Mesh(GL_TRIANGLES);
+
+    for(int i = 0; i < P.size(); i++){
+        m_ObjetSimule.normal(_vectNormals[i].x, _vectNormals[i].y, _vectNormals[i].z);
+        m_ObjetSimule.texcoord(_vectTexture[i].u, _vectTexture[i].v);
+        m_ObjetSimule.vertex(P[i].x, P[i].y, P[i].z);
+    }
+    for(int j = 0; j < _VISize; j+=3) {
+        m_ObjetSimule.triangle(_VIndices[j], _VIndices[j+1], _VIndices[j+2]);
+    }
 }
 
 
@@ -410,8 +414,10 @@ void ObjetSimuleMSS::initMeshObjet()
 void ObjetSimuleMSS::updateVertex()
 {
     //std::cout << "ObjetSimuleMSS::updateVertex() ..." << std::endl;
-    
-      
+
+    for(int i = 0; i < P.size(); i++){
+        m_ObjetSimule.vertex(i, Point(P[i].x, P[i].y, P[i].z));
+    }
 }
 
 
@@ -441,7 +447,7 @@ void ObjetSimuleMSS::Simulation(Vector gravite, float viscosite, int Tps)
     /* ! Gestion des collisions  */
     // Reponse : reste a la position du sol - arret des vitesses
     // Penser au Translate de l objet dans la scene pour trouver plan coherent
-    //CollisionPlan();
+    CollisionPlan();
     
     // Affichage des positions
    //  AffichagePos(Tps);

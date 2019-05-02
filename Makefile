@@ -6,18 +6,143 @@ ifndef config
 endif
 export config
 
-PROJECTS := master_MecaSim_corrige
+PROJECTS := shader_kit tuto1 tuto2 tuto3 tuto4 tuto5 tuto6 tuto7 tuto8 tuto_transform tuto_pad tuto2GL tuto3GL tuto3GL_reflect tuto4GL tuto4GL_normals tuto5GL tuto5GL_sampler tuto5GL_samplers tuto5GL_multi tuto6GL tuto6GL_buffer tuto_framebuffer tuto_time tuto_mdi tp2
 
 .PHONY: all clean help $(PROJECTS)
 
 all: $(PROJECTS)
 
-master_MecaSim_corrige: 
-	@echo "==== Building master_MecaSim_corrige ($(config)) ===="
-	@${MAKE} --no-print-directory -C . -f master_MecaSim_corrige.make
+shader_kit: 
+	@echo "==== Building shader_kit ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f shader_kit.make
+
+tuto1: 
+	@echo "==== Building tuto1 ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto1.make
+
+tuto2: 
+	@echo "==== Building tuto2 ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto2.make
+
+tuto3: 
+	@echo "==== Building tuto3 ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto3.make
+
+tuto4: 
+	@echo "==== Building tuto4 ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto4.make
+
+tuto5: 
+	@echo "==== Building tuto5 ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto5.make
+
+tuto6: 
+	@echo "==== Building tuto6 ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto6.make
+
+tuto7: 
+	@echo "==== Building tuto7 ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto7.make
+
+tuto8: 
+	@echo "==== Building tuto8 ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto8.make
+
+tuto_transform: 
+	@echo "==== Building tuto_transform ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto_transform.make
+
+tuto_pad: 
+	@echo "==== Building tuto_pad ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto_pad.make
+
+tuto2GL: 
+	@echo "==== Building tuto2GL ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto2GL.make
+
+tuto3GL: 
+	@echo "==== Building tuto3GL ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto3GL.make
+
+tuto3GL_reflect: 
+	@echo "==== Building tuto3GL_reflect ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto3GL_reflect.make
+
+tuto4GL: 
+	@echo "==== Building tuto4GL ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto4GL.make
+
+tuto4GL_normals: 
+	@echo "==== Building tuto4GL_normals ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto4GL_normals.make
+
+tuto5GL: 
+	@echo "==== Building tuto5GL ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto5GL.make
+
+tuto5GL_sampler: 
+	@echo "==== Building tuto5GL_sampler ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto5GL_sampler.make
+
+tuto5GL_samplers: 
+	@echo "==== Building tuto5GL_samplers ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto5GL_samplers.make
+
+tuto5GL_multi: 
+	@echo "==== Building tuto5GL_multi ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto5GL_multi.make
+
+tuto6GL: 
+	@echo "==== Building tuto6GL ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto6GL.make
+
+tuto6GL_buffer: 
+	@echo "==== Building tuto6GL_buffer ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto6GL_buffer.make
+
+tuto_framebuffer: 
+	@echo "==== Building tuto_framebuffer ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto_framebuffer.make
+
+tuto_time: 
+	@echo "==== Building tuto_time ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto_time.make
+
+tuto_mdi: 
+	@echo "==== Building tuto_mdi ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tuto_mdi.make
+
+tp2: 
+	@echo "==== Building tp2 ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f tp2.make
 
 clean:
-	@${MAKE} --no-print-directory -C . -f master_MecaSim_corrige.make clean
+	@${MAKE} --no-print-directory -C . -f shader_kit.make clean
+	@${MAKE} --no-print-directory -C . -f tuto1.make clean
+	@${MAKE} --no-print-directory -C . -f tuto2.make clean
+	@${MAKE} --no-print-directory -C . -f tuto3.make clean
+	@${MAKE} --no-print-directory -C . -f tuto4.make clean
+	@${MAKE} --no-print-directory -C . -f tuto5.make clean
+	@${MAKE} --no-print-directory -C . -f tuto6.make clean
+	@${MAKE} --no-print-directory -C . -f tuto7.make clean
+	@${MAKE} --no-print-directory -C . -f tuto8.make clean
+	@${MAKE} --no-print-directory -C . -f tuto_transform.make clean
+	@${MAKE} --no-print-directory -C . -f tuto_pad.make clean
+	@${MAKE} --no-print-directory -C . -f tuto2GL.make clean
+	@${MAKE} --no-print-directory -C . -f tuto3GL.make clean
+	@${MAKE} --no-print-directory -C . -f tuto3GL_reflect.make clean
+	@${MAKE} --no-print-directory -C . -f tuto4GL.make clean
+	@${MAKE} --no-print-directory -C . -f tuto4GL_normals.make clean
+	@${MAKE} --no-print-directory -C . -f tuto5GL.make clean
+	@${MAKE} --no-print-directory -C . -f tuto5GL_sampler.make clean
+	@${MAKE} --no-print-directory -C . -f tuto5GL_samplers.make clean
+	@${MAKE} --no-print-directory -C . -f tuto5GL_multi.make clean
+	@${MAKE} --no-print-directory -C . -f tuto6GL.make clean
+	@${MAKE} --no-print-directory -C . -f tuto6GL_buffer.make clean
+	@${MAKE} --no-print-directory -C . -f tuto_framebuffer.make clean
+	@${MAKE} --no-print-directory -C . -f tuto_time.make clean
+	@${MAKE} --no-print-directory -C . -f tuto_mdi.make clean
+	@${MAKE} --no-print-directory -C . -f tp2.make clean
 
 help:
 	@echo "Usage: make [config=name] [target]"
@@ -31,6 +156,31 @@ help:
 	@echo "TARGETS:"
 	@echo "   all (default)"
 	@echo "   clean"
-	@echo "   master_MecaSim_corrige"
+	@echo "   shader_kit"
+	@echo "   tuto1"
+	@echo "   tuto2"
+	@echo "   tuto3"
+	@echo "   tuto4"
+	@echo "   tuto5"
+	@echo "   tuto6"
+	@echo "   tuto7"
+	@echo "   tuto8"
+	@echo "   tuto_transform"
+	@echo "   tuto_pad"
+	@echo "   tuto2GL"
+	@echo "   tuto3GL"
+	@echo "   tuto3GL_reflect"
+	@echo "   tuto4GL"
+	@echo "   tuto4GL_normals"
+	@echo "   tuto5GL"
+	@echo "   tuto5GL_sampler"
+	@echo "   tuto5GL_samplers"
+	@echo "   tuto5GL_multi"
+	@echo "   tuto6GL"
+	@echo "   tuto6GL_buffer"
+	@echo "   tuto_framebuffer"
+	@echo "   tuto_time"
+	@echo "   tuto_mdi"
+	@echo "   tp2"
 	@echo ""
 	@echo "For more information, see http://industriousone.com/premake/quick-start"

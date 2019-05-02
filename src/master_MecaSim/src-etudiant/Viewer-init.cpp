@@ -223,9 +223,9 @@ int Viewer::init()
 
     // Texture pour le tissu
     //m_tissu_texture = read_texture(0, "data/papillon.png");
-    //m_tissu_texture = read_texture(0, "data/textures/tissu1.png");
+    m_tissu_texture = read_texture(0, "data/textures/tissu1.png");
    // m_tissu_texture = read_texture(0, "data/textures/tissu2.jpg");
-    m_tissu_texture = read_texture(0, smart_path("data/textures/tissu2.jpg"));
+    //m_tissu_texture = read_texture(0, smart_path("data/textures/tissu2.jpg"));
 
     // Appel des procedures d initialisation des objets de la scene
     // Pour les objets non simules
@@ -237,7 +237,7 @@ int Viewer::init()
     
     // Creation du plan (x, y, z) - plan utilise pour les ObjetSimule::CollisionPlan(x, y, z);
     // Rq : pas vraiment le plan, mais < x, < y, < z
-    //init_plan(0, 0, 0);
+    init_plan(0, 0, 0);
     
     // Initialisation du Tps
     Tps = 0;

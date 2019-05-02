@@ -50,6 +50,27 @@ void ObjetSimuleMSS::CalculForceSpring()
 	/// f = somme_i (ki * (l(i,j)-l_0(i,j)) * uij ) + (nuij * (vi - vj) * uij) + (m*g) + force_ext
 	
 	/// Rq : Les forces dues a la gravite et au vent sont ajoutees lors du calcul de l acceleration
+
+    vector<Ressort*> ressorts = _SytemeMasseRessort->GetRessortList();
+
+	for (int i = 0; i < _SytemeMasseRessort->GetNbRessort(); i++) {
+	    Particule *pA = ressorts[i]->GetParticuleA();
+	    Particule *pB = ressorts[i]->GetParticuleB();
+
+	    float longeur = length(P[pA->GetId()] - P[pB->GetId()]);
+
+	    Vector uijA = (P[pA->GetId()] - P[pB->GetId()]) / longeur;
+	    Vector uijB = (P[pB->GetId()] - P[pA->GetId()]) / longeur;
+
+	    Vector elaA = ressorts[i]->GetRaideur() * (longeur - ressorts[i]->GetLrepos()) * uijB;
+	    Vector elaB = ressorts[i]->GetRaideur() * (longeur - ressorts[i]->GetLrepos()) * uijA;
+
+	    Vector viscoA = (ressorts[i]->GetAmortissement() * dot(V[pB->GetId()] - V[pA->GetId()], uijB)) * uijB;
+	    Vector viscoB = (ressorts[i]->GetAmortissement() * dot(V[pA->GetId()] - V[pB->GetId()], uijA)) * uijA;
+
+	    Force[pA->GetId()] = Force[pA->GetId()] + elaA + viscoA;
+        Force[pB->GetId()] = Force[pB->GetId()] + elaB + viscoB;
+	}
     
 		
 }//void
@@ -61,7 +82,18 @@ void ObjetSimuleMSS::CalculForceSpring()
 void ObjetSimuleMSS::CollisionPlan()
 {
     /// Arret de la vitesse quand touche le plan
-   
-    
+	vector<Particule*> parts = _SytemeMasseRessort->GetPartList();
+
+
+	//TODO Trouver un moyen de calculer le plan de collision.
+	for (int i = 0; i < _SytemeMasseRessort->GetNbParticule(); i++) {
+		if(P[i].y <= 0) {
+		    A[i] = -_Friction * A[i];
+		}
+	}
+
+
+
+
 }// void
 

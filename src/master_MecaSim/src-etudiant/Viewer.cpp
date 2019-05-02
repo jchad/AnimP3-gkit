@@ -181,8 +181,8 @@ int Viewer::render( )
             // Affichage d un cube au point d interaction
             // !TODO : pb avec le scale - cube plus sur le point 0 qd bouge
             // gl.texture(0);
-            gl.model((Translation( Vector((*e)->Coord_Point_Inter)) * T ) * Scale(0.03, 0.03, 0.03));
-            gl.draw(m_cube);
+            //gl.model((Translation( Vector((*e)->Coord_Point_Inter)) * T ) * Scale(0.03, 0.03, 0.03));
+            //gl.draw(m_cube);
             
         }//mss
         
@@ -219,8 +219,8 @@ int Viewer::render( )
 
         
         // Affichage du plan ou se produisent les collisions
-        // gl.model(Identity());
-        //   gl.draw(m_plan);
+        gl.model(Identity());
+        gl.draw(m_plan);
         
         // Passage a l objet suivant
         num++;
