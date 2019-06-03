@@ -83,17 +83,30 @@ void ObjetSimuleMSS::CollisionPlan()
 {
     /// Arret de la vitesse quand touche le plan
 	vector<Particule*> parts = _SytemeMasseRessort->GetPartList();
-
-
-	//TODO Trouver un moyen de calculer le plan de collision.
 	for (int i = 0; i < _SytemeMasseRessort->GetNbParticule(); i++) {
-		if(P[i].y <= 0) {
-		    A[i] = -_Friction * A[i];
+		if(P[i].y <= -10) {
+		    P[i].y = -20 - P[i].y;
+		    V[i].y = -V[i].y * 0.9;
 		}
 	}
 
-
-
-
 }// void
 
+/**
+ * Gestion de la collision avec un autre objet
+ */
+void ObjetSimuleMSS::Collision(Transform t) {
+
+}//void
+
+void ObjetSimuleMSS::CollisionSphere(Point p, double rayon, double visco) {
+    for (int i = 0; i < P.size(); i++) {
+        if( distance(P[i] + Point(0,0,0), p) < rayon) {
+            Vector cp(p,P[i] + Point(0,0,0));
+            Vector n = normalize(cp);
+
+            P[i] = Vector(Point(0,0,0) ,(n * rayon + p));
+            V[i]= visco * (V[i] + 2 * dot(V[i], -n) * n);
+        }
+    }
+}

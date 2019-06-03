@@ -54,6 +54,10 @@ public:
     
     /*! Gestion des collisions */
     void CollisionPlan();
+
+    void Collision(Transform t);
+
+    void CollisionSphere(Point p, double rayon, double visco);
     
     /*! Mise a jour du Mesh (pour affichage) de l objet en fonction des nouvelles positions calculees */
     void updateVertex();
