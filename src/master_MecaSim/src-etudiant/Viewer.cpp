@@ -221,6 +221,21 @@ int Viewer::render( )
         // Affichage du plan ou se produisent les collisions
         gl.model(Identity());
         gl.draw(m_plan);
+
+        gl.model(Scale(0.3,0.3,0.3) * Translation(3.5,5,-3.5) );
+        gl.draw(m_sphere2);
+
+        gl.model(Scale(0.3,0.3,0.3) * Translation(3.5,8,-2.5) );
+        gl.draw(m_sphere);
+
+        gl.model(Scale(0.3,0.3,0.3) * Translation(3.5,2,-6.5) );
+        gl.draw(m_sphere);
+
+        gl.model(Scale(0.3,0.3,0.3) * Translation(3.5,8,-6.5) );
+        gl.draw(m_sphere);
+
+        gl.model(Scale(0.3,0.3,0.3) * Translation(6.5,8,-4.5) );
+        gl.draw(m_sphere);
         
         // Passage a l objet suivant
         num++;

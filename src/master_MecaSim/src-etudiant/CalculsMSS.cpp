@@ -86,7 +86,7 @@ void ObjetSimuleMSS::CollisionPlan()
 	for (int i = 0; i < _SytemeMasseRessort->GetNbParticule(); i++) {
 		if(P[i].y <= -10) {
 		    P[i].y = -20 - P[i].y;
-		    V[i].y = -V[i].y * 0.9;
+		    V[i].y = -V[i].y * 0.1;
 		}
 	}
 
@@ -106,7 +106,9 @@ void ObjetSimuleMSS::CollisionSphere(Point p, double rayon, double visco) {
             Vector n = normalize(cp);
 
             P[i] = Vector(Point(0,0,0) ,(n * rayon + p));
-            V[i]= visco * (V[i] + 2 * dot(V[i], -n) * n);
+
+            Vector A = (V[i] + 2 * dot(V[i], -n) * n);
+            V[i]= visco * A;
         }
     }
 }

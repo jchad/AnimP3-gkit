@@ -6,6 +6,7 @@
 #include <cmath>
 #include <cstdio>
 #include <iostream>
+#include <wavefront.h>
 
 #include "draw.h"
 #include "Viewer.h"
@@ -147,7 +148,7 @@ void Viewer::init_sphere()
     const int divAlpha = divBeta/2;
     int i,j;
     float beta, alpha, alpha2;
-    float rayon = 0.05;
+    float rayon = 1;
     
     m_sphere = Mesh(GL_TRIANGLE_STRIP);
     
@@ -164,7 +165,7 @@ void Viewer::init_sphere()
             
             m_sphere.texcoord(beta/(2.0f*M_PI), 0.5f+alpha2/M_PI);
             
-            m_sphere.normal( - Vector(rayon * cos(alpha2)*cos(beta),
+            m_sphere.normal(  Vector(rayon * cos(alpha2)*cos(beta),
                                     rayon * sin(alpha2),
                                     rayon * cos(alpha2)*sin(beta)) );
             
@@ -175,7 +176,7 @@ void Viewer::init_sphere()
             
             m_sphere.texcoord(beta/(2.0f*M_PI), 0.5f+alpha/M_PI);
             
-            m_sphere.normal( - Vector(rayon * cos(alpha)*cos(beta),
+            m_sphere.normal(  Vector(rayon * cos(alpha)*cos(beta),
                                     rayon * sin(alpha),
                                     rayon * cos(alpha)*sin(beta)) );
             
@@ -186,6 +187,10 @@ void Viewer::init_sphere()
         
         m_sphere.restart_strip();
     }
+}
+
+void Viewer::init_sphere2(){
+    m_sphere2 = read_mesh("data/sphere2r.obj");
 }
 
 
@@ -234,6 +239,7 @@ int Viewer::init()
     init_grid();
     init_cube();
     init_sphere();
+    init_sphere2();
     
     // Creation du plan (x, y, z) - plan utilise pour les ObjetSimule::CollisionPlan(x, y, z);
     // Rq : pas vraiment le plan, mais < x, < y, < z

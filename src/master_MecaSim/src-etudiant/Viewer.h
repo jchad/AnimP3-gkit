@@ -93,6 +93,7 @@ protected:
     Mesh m_cube;
     Mesh m_plan;
     Mesh m_sphere;
+    Mesh m_sphere2;
     
     // Declaration des textures
     // Exemple : GLuint m_votreObjet_texture;
@@ -109,6 +110,8 @@ protected:
     void init_grid();
     void init_cube();
     void init_sphere();
+
+    void init_sphere2();
   
     
     // Creation du maillage du plan de collision (x, y, z)

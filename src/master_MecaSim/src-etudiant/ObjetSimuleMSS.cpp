@@ -301,7 +301,10 @@ void ObjetSimuleMSS::initObjetSimule()
     // X, Y, Df_Dx, Df_Dx_diag, Df_Dv, Df_Dv_diag
     if (_Integration == "implicite")
         _SolveurImpl->Allocation_Structure(_Nb_Sommets);
-    
+
+    for (int i = 0; i < P.size(); i++){
+        P[i] = RotationX(90)(P[i]);
+    }
 }
 
 
@@ -448,8 +451,15 @@ void ObjetSimuleMSS::Simulation(Vector gravite, float viscosite, int Tps)
     // Reponse : reste a la position du sol - arret des vitesses
     // Penser au Translate de l objet dans la scene pour trouver plan coherent
     CollisionPlan();
-    CollisionSphere(Point(0,-10,0), 2, 0.95);
-    
+    CollisionSphere(Point(3.5,-5,-3.5), 2, viscosite);
+
+    CollisionSphere(Point(3.5,-2,-2.5), 1, viscosite);
+
+    CollisionSphere(Point(3.5,-8,-6.5), 1, viscosite);
+
+    CollisionSphere(Point(3.5,-2,-6.5), 1, viscosite);
+
+    CollisionSphere(Point(6.5,-2,-4.5), 1, viscosite);
     // Affichage des positions
    //  AffichagePos(Tps);
     
